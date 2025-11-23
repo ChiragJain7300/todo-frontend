@@ -5,7 +5,7 @@ export default function useCreateTodo() {
   const { data: session } = useSession();
 
   async function createTodo(title: string, description: string = "") {
-    const result = await fetch("http://localhost:8000/todos", {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

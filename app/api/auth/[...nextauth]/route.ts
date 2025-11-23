@@ -11,14 +11,17 @@ const handler = NextAuth({
       credentials: {},
 
       async authorize(credentials: any) {
-        const res = await fetch("http://localhost:8000/auth/sign-in", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: credentials?.email,
-            password: credentials?.password,
-          }),
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: credentials?.email,
+              password: credentials?.password,
+            }),
+          }
+        );
 
         const data = await res.json();
 

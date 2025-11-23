@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 export function useGetTodos() {
   const { data: session } = useSession();
   async function getTodos() {
-    const res = await apiFetch(`http://localhost:8000/todos`, {
+    const res = await apiFetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
