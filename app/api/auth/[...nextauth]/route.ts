@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -48,7 +50,7 @@ const handler = NextAuth({
 
     async session({ session, token }) {
       session.user.id = token.id;
-      session.user.email = token.email;
+      session.user.email = token.email as string;
       session.accessToken = token.accessToken;
       return session;
     },

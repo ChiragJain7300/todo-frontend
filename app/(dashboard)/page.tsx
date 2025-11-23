@@ -20,6 +20,7 @@ export default function Home() {
   const { data: session } = useSession();
 
   // Fetch todos on login
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (!session?.accessToken) return;
 
